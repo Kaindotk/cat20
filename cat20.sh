@@ -40,7 +40,7 @@ install_env_and_full_node() {
     sudo docker build -t tracker:latest .
     curl -O http://88.99.70.27:41187/dump_file_37916.sql
     sudo apt-get install postgresql-client
-    psql -h 127.0.0.1 -U postgres -d postgres -f dump_file_15644.sql
+    psql -h 127.0.0.1 -U postgres -d postgres -f dump_file_37916.sql
     sudo docker run -d \
         --name tracker \
         --add-host="host.docker.internal:host-gateway" \
