@@ -111,8 +111,8 @@ check_wallet_balance() {
   sudo yarn cli wallet balances
 }
 
-echo && echo -e " ${Red_font_prefix}dusk_network One-click installation script(Translated by Ka1n)${Font_color_suffix} by \033[1;35moooooyoung\033[0m
-This script is completely free and open source, created by Twitter user ${Green_font_prefix}@ouyoung11 developer${Font_color_suffix}, 
+echo && echo -e "
+${Red_font_prefix}dusk_network One-click installation script${Font_color_suffix} by \033[1;35Kain\033[0m
 Welcome to pay attention. If there are any charges, please do not be deceived.
  ———————————————————————
  ${Green_font_prefix} 1.Install Dependencies and Node ${Font_color_suffix}
