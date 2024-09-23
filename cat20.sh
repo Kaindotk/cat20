@@ -43,7 +43,7 @@ install_env_and_full_node() {
     cd tracker/
     sudo chmod 777 docker/data
     sudo chmod 777 docker/pgdata
-    sudo docker-compose up -d
+    sudo docker compose up -d
 
     cd ../../
     sudo docker build -t tracker:latest .
