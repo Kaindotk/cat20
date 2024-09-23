@@ -15,7 +15,6 @@ install_env_and_full_node() {
     check_root
     sudo apt update && sudo apt upgrade -y
     sudo apt install git curl -y
-    sudo snap install docker -y
 
     sudo apt-get install npm -y
     sudo npm install n -g
@@ -23,11 +22,25 @@ install_env_and_full_node() {
     sudo npm i -g yarn
 
     git clone https://github.com/CATProtocol/cat-token-box
-    cd cat-token-box
+
+    cd cat-token-box/packages/tracker/
     sudo yarn install
     sudo yarn build
 
-    cd ./packages/tracker/
+    cd && cd cat-token-box/
+    yarn build
+    sudo apt update && sudo apt upgrade
+    sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+    cd ./packages
+    sudo apt update
+    sudo apt install docker-ce docker-ce-cli containerd.io -y
+    sudo docker --version
+    sudo usermod -aG docker ${USER}
+
+    cd tracker/
     sudo chmod 777 docker/data
     sudo chmod 777 docker/pgdata
     sudo docker-compose up -d
